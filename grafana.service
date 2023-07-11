@@ -1,15 +1,14 @@
 [Unit]
-Description=Prometheus Server
+Description=Grafana Server
 After=network-online.target
 
 [Service]
-User=prometheus
-Group=prometheus
+User=grafana
+Group=grafana
 Restart=on-failure
-ExecStart=/app/monitoring/prometheus/prometheus \
-  --config.file=/app/monitoring/prometheus/prometheus.yml \
-  --storage.tsdb.path=/app/monitoring/prometheus/data \
-  --storage.tsdb.retention.time=30d
+ExecStart=/app/monitoring/grafana/bin/grafana server \
+  --config /app/monitoring/grafana/conf/defaults.ini \
+  --homepath /app/monitoring/grafana
 
 [Install]
 WantedBy=multi-user.target
