@@ -1,0 +1,99 @@
+"use strict";(self.webpackChunkgrafana=self.webpackChunkgrafana||[]).push([[5981],{78014:(F,x,t)=>{t.d(x,{Z:()=>s});var e=t(66111),n=t(14747),P=t(31403),v=t(95509);class s extends e.PureComponent{render(){const{searchQuery:r,linkButton:D,setSearchQuery:h,target:y,placeholder:S="Search by name or type",sortPicker:i}=this.props,m={href:D?.href,disabled:D?.disabled};return y&&(m.target=y),e.createElement("div",{className:"page-action-bar"},e.createElement("div",{className:"gf-form gf-form--grow"},e.createElement(n.H,{value:r,onChange:h,placeholder:S})),i&&e.createElement(v.P,{onChange:i.onChange,value:i.value,getSortOptions:i.getSortOptions}),D&&e.createElement(P.Qj,{...m},D.title))}}},95509:(F,x,t)=>{t.d(x,{P:()=>D});var e=t(66111),n=t(59679),P=t(8581),v=t(39904),s=t(10216),l=t(82e3);const r=()=>(0,l.getGrafanaSearcher)().getSortOptions();function D({onChange:h,value:y,placeholder:S,filter:i,getSortOptions:m,isClearable:O}){const W=(0,n.Z)(async()=>{const d=await(m??r)();return i?d.filter(R=>i.includes(R.value)):d},[m,i]);if(W.loading)return null;const B=Boolean(y?.includes("desc")||y?.startsWith("-"));return e.createElement(P.Ph,{key:y,width:28,onChange:h,value:W.value?.find(d=>d.value===y)??null,options:W.value,"aria-label":"Sort",placeholder:S??`Sort (Default ${s.yw.label})`,prefix:e.createElement(v.J,{name:B?"sort-amount-down":"sort-amount-up"}),isClearable:O})}},56287:(F,x,t)=>{t.r(x),t.d(x,{default:()=>re});var e=t(66111),n=t(56895),P=t(25e3),v=t(27876),s=t(86475),l=t(8412),r=t(9892),D=t(59250),h=t(72648),y=t(61744),S=t(77582),i=t(74509),m=t(72948);const O=a=>({sourcesList:r.css`
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+    list-style: none;
+    margin-bottom: 80px;
+  `,card:r.css`
+    height: 90px;
+    padding: 0px 24px;
+    margin-bottom: 0;
+  `,cardContent:r.css`
+    display: flex;
+    align-items: center;
+  `,logoWrapper:r.css`
+    display: flex;
+    justify-content: center;
+    margin-right: 8px;
+    width: 32px;
+    height: 32px;
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      align-self: center;
+    }
+  `,label:r.css`
+    color: ${a.colors.text.primary};
+    margin-bottom: 0;
+  `}),W=({items:a,onClickItem:g})=>{const p=(0,h.wW)(O);return e.createElement("ul",{className:p.sourcesList},a.map(f=>e.createElement(m.Z,{key:f.id,className:p.card,href:f.url,onClick:$=>{g&&g($,f)}},e.createElement(m.Z.Heading,null,e.createElement("div",{className:p.cardContent},f.logo&&e.createElement("div",{className:p.logoWrapper},e.createElement("img",{src:f.logo,alt:`logo of ${f.name}`})),e.createElement("h4",{className:p.label},f.name))))))};var B=t(39904);const d=a=>({categoryHeader:r.css`
+    align-items: center;
+    display: flex;
+    margin-bottom: 24px;
+  `,categoryLabel:r.css`
+    margin-bottom: 0px;
+    margin-left: 8px;
+  `}),R=({iconName:a,label:g})=>{const p=(0,h.wW)(d);return e.createElement("div",{className:p.categoryHeader},e.createElement(B.J,{name:a,size:"xl"}),e.createElement("h3",{className:p.categoryLabel},g))};var b=t(35029),Z=t(31403);const H=a=>({modal:r.css`
+    width: 500px;
+  `,modalContent:r.css`
+    overflow: visible;
+    color: ${a.colors.text.secondary};
+
+    a {
+      color: ${a.colors.text.link};
+    }
+  `,description:r.css`
+    margin-bottom: ${a.spacing(2)};
+  `,bottomSection:r.css`
+    display: flex;
+    border-top: 1px solid ${a.colors.border.weak};
+    padding-top: ${a.spacing(3)};
+    margin-top: ${a.spacing(3)};
+  `,actionsSection:r.css`
+    display: flex;
+    justify-content: end;
+    margin-top: ${a.spacing(3)};
+  `,warningIcon:r.css`
+    color: ${a.colors.warning.main};
+    padding-right: ${a.spacing()};
+    margin-top: ${a.spacing(.25)};
+  `,header:r.css`
+    display: flex;
+    align-items: center;
+  `,headerTitle:r.css`
+    margin: 0;
+  `,headerLogo:r.css`
+    margin-right: ${a.spacing(2)};
+    width: 32px;
+    height: 32px;
+  `});function Q({item:a,isOpen:g,onDismiss:p}){const f=(0,h.wW)(H);return e.createElement(b.u,{className:f.modal,contentClassName:f.modalContent,title:e.createElement(j,{item:a}),isOpen:g,onDismiss:p},e.createElement("div",null,e.createElement("div",null,a.description&&e.createElement("div",{className:f.description},a.description),e.createElement("div",null,"Links",e.createElement("br",null),e.createElement("a",{href:`https://grafana.com/grafana/plugins/${a.id}`,title:`${a.name} on Grafana.com`,target:"_blank",rel:"noopener noreferrer"},a.name))),e.createElement("div",{className:f.bottomSection},e.createElement("div",{className:f.warningIcon},e.createElement(B.J,{name:"exclamation-triangle"})),e.createElement("div",null,e.createElement("p",null,"Editors cannot add new connections. You may check to see if it is already configured in"," ",e.createElement("a",{href:"/connections/datasources"},"Data sources"),"."),e.createElement("p",null,"To add a new connection, contact your Grafana admin."))),e.createElement("div",{className:f.actionsSection},e.createElement(Z.zx,{onClick:p},"Okay"))))}function j({item:a}){const g=(0,h.wW)(H);return e.createElement("div",null,e.createElement("div",{className:g.header},a.logo&&e.createElement("img",{className:g.headerLogo,src:a.logo,alt:`logo of ${a.name}`}),e.createElement("h4",{className:g.headerTitle},a.name)))}const A=()=>({noResults:r.css`
+    text-align: center;
+    padding: 50px 0;
+    font-style: italic;
+  `}),L=()=>{const a=(0,h.wW)(A);return e.createElement("p",{className:a.noResults},"No results matching your query were found.")};var U=t(46967);const K=a=>({searchContainer:r.css`
+    display: flex;
+    margin: 16px 0;
+    justify-content: space-between;
+
+    position: sticky;
+    top: 0;
+    background-color: ${a.colors.background.primary};
+    z-index: 2;
+    padding: ${a.spacing(2)};
+    margin: 0 -${a.spacing(2)};
+  `}),c=({onChange:a})=>{const g=(0,h.wW)(K);return e.createElement("div",{className:g.searchContainer},e.createElement(U.I,{onChange:a,prefix:e.createElement(B.J,{name:"search"}),placeholder:"Search all","aria-label":"Search all"}))},u=()=>({spacer:r.css`
+    height: 16px;
+  `,modal:r.css`
+    width: 500px;
+  `,modalContent:r.css`
+    overflow: visible;
+  `});function o(){const[a,g]=(0,e.useState)(""),[p,f]=(0,e.useState)(!1),[$,V]=(0,e.useState)(null),ce=(0,h.wW)(u),le=S.Vt.hasPermission(v.AccessControlAction.DataSourcesCreate),ie=M=>{g(M.currentTarget.value.toLowerCase())},{isLoading:w,error:G,plugins:z}=(0,i.Pj)({keyword:a,type:D.zV.datasource}),de=(0,e.useMemo)(()=>z.map(M=>({id:M.id,name:M.name,description:M.description,logo:M.info.logos.small,url:s.Z.DataSourcesDetails.replace(":id",M.id)})),[z]),ue=(M,pe)=>{le||(M.preventDefault(),M.stopPropagation(),me(pe))},me=M=>{f(!0),V(M)},ge=()=>{f(!1),V(null)},Ee=(0,e.useMemo)(()=>!w&&!G&&z.length<1,[w,G,z]);return e.createElement(e.Fragment,null,$&&e.createElement(Q,{item:$,isOpen:p,onDismiss:ge}),e.createElement(c,{onChange:ie}),e.createElement("div",{className:ce.spacer}),e.createElement(R,{iconName:"database",label:"Data sources"}),w?e.createElement(y.u,{text:"Loading..."}):G?e.createElement("p",null,"Error: ",G.message):e.createElement(W,{items:de,onClickItem:ue}),Ee&&e.createElement(L,null))}function N(){return e.createElement(l.T,{navId:"connections-add-new-connection"},e.createElement(l.T.Contents,null,e.createElement(o,null)))}var C=t(45253),E=t(19985),T=t(56747);function I(){const a="standalone-plugin-page-/connections/add-new-connection",{id:g}=(0,n.UO)(),p=(0,v.useSelector)(V=>V.navIndex),$=Boolean(p[a])?a:"connections-add-new-connection";return e.createElement(T.Q,{pluginId:g,navId:$,notFoundComponent:e.createElement(X,null),notFoundNavModel:{text:"Unknown datasource",subTitle:"No datasource with this ID could be found.",active:!0}})}function X(){const{id:a}=(0,n.UO)();return e.createElement(C.b,{severity:v.AppNotificationSeverity.Warning,title:""},"Maybe you mistyped the URL or the plugin with the id ",e.createElement(E.C,{text:a,color:"orange"})," is unavailable.",e.createElement("br",null),"To see a list of available datasources please ",e.createElement("a",{href:s.Z.AddNewConnection},"click here"),".")}var Y=t(19703),k=t(81955);function q(){const g=(0,v.useSelector)(({dataSources:p})=>(0,P.r7)(p))>0?e.createElement(Y.G,null):void 0;return e.createElement(l.T,{navId:"connections-datasources",actions:g},e.createElement(l.T.Contents,null,e.createElement(k.c,null)))}var _=t(81960),J=t(56090);function ee(){const{uid:a}=(0,n.UO)(),{navId:g,pageNav:p}=(0,J.M)("dashboards");return e.createElement(l.T,{navId:g,pageNav:p},e.createElement(l.T.Contents,null,e.createElement(_.Z,{uid:a})))}var te=t(77632),ae=t(3515);function ne(){const{uid:a}=(0,n.UO)(),g=(0,n.TH)(),f=new URLSearchParams(g.search).get("page"),{navId:$,pageNav:V}=(0,J.M)();return e.createElement(l.T,{navId:$,pageNav:V,actions:e.createElement(ae.K,{uid:a})},e.createElement(l.T.Contents,null,e.createElement(te.H,{uid:a,pageId:f})))}var se=t(86218);function oe(){return e.createElement(l.T,{navId:"connections-datasources",pageNav:{text:"Add data source",subTitle:"Choose a data source type",active:!0}},e.createElement(l.T.Contents,null,e.createElement(se.x,null)))}function re(){const a=(0,v.useSelector)(p=>p.navIndex),g=Boolean(a["standalone-plugin-page-/connections/add-new-connection"]);return e.createElement(P.Vj.Provider,{value:{New:s.Z.DataSourcesNew,List:s.Z.DataSources,Edit:s.Z.DataSourcesEdit,Dashboards:s.Z.DataSourcesDashboards}},e.createElement(n.rs,null,e.createElement(n.AW,{exact:!0,sensitive:!0,path:s.Z.Base,component:()=>e.createElement(n.l_,{to:s.Z.AddNewConnection})}),e.createElement(n.AW,{exact:!0,sensitive:!0,path:s.Z.DataSources,component:q}),e.createElement(n.AW,{exact:!0,sensitive:!0,path:s.Z.DataSourcesNew,component:oe}),e.createElement(n.AW,{exact:!0,sensitive:!0,path:s.Z.DataSourcesDetails,component:I}),e.createElement(n.AW,{exact:!0,sensitive:!0,path:s.Z.DataSourcesEdit,component:ne}),e.createElement(n.AW,{exact:!0,sensitive:!0,path:s.Z.DataSourcesDashboards,component:ee}),!g&&e.createElement(n.AW,{exact:!0,sensitive:!0,path:s.Z.AddNewConnection,component:N}),e.createElement(n.AW,{component:()=>e.createElement(n.l_,{to:"/notfound"})})))}},19703:(F,x,t)=>{t.d(x,{G:()=>r});var e=t(66111),n=t(35645),P=t(31403),v=t(77582),s=t(27876),l=t(25e3);function r(){const D=v.Vt.hasPermission(s.AccessControlAction.DataSourcesCreate),h=(0,l.d7)();return D?e.createElement(P.Qj,{icon:"plus",href:n.v.appSubUrl+h.New},"Add new data source"):null}},81960:(F,x,t)=>{t.d(x,{Z:()=>D});var e=t(66111),n=t(2555),P=t(86977),v=t(85805),s=t(27876),l=t(44034),r=t(25e3);function D({uid:y}){(0,r.wi)(y);const S=(0,s.useDispatch)(),i=(0,s.useSelector)(d=>d.dataSources.dataSource),m=(0,s.useSelector)(d=>d.plugins.dashboards),O=(0,s.useSelector)(d=>d.plugins.isLoadingPluginDashboards);(0,e.useEffect)(()=>{i.id>0&&S((0,v.m3)())},[S,i]);const W=(d,R)=>{S((0,P.$j)({pluginId:d.pluginId,path:d.path,overwrite:R,inputs:[{name:"*",type:"datasource",pluginId:i.type,value:i.name}]},d.title))},B=({uid:d})=>{S((0,P.fG)(d))};return e.createElement(h,{dashboards:m,isLoading:O,onImportDashboard:W,onRemoveDashboard:B})}const h=({isLoading:y,dashboards:S,onImportDashboard:i,onRemoveDashboard:m})=>y?e.createElement(n.Z,null):e.createElement(l.Z,{dashboards:S,onImport:i,onRemove:m})},81955:(F,x,t)=>{t.d(x,{c:()=>H});var e=t(9892),n=t(66111),P=t(56895),v=t(35645),s=t(72648),l=t(72948),r=t(34719),D=t(31403),h=t(69142),y=t(2555),S=t(77582),i=t(27876),m=t(25e3),O=t(63065),W=t(85597),B=t(78014);const d="alpha-asc",R="alpha-desc",b=[{label:"Sort by A\u2013Z",value:d},{label:"Sort by Z\u2013A",value:R}];function Z(){const A=(0,i.useDispatch)(),L=(0,n.useCallback)(o=>A((0,m.zT)(o)),[A]),U=(0,i.useSelector)(({dataSources:o})=>(0,m.IO)(o)),K=(0,n.useCallback)(o=>A((0,m.Nu)(o.value===d)),[A]),c=(0,i.useSelector)(({dataSources:o})=>(0,m.IA)(o)),u={onChange:K,value:c?d:R,getSortOptions:()=>Promise.resolve(b)};return n.createElement(B.Z,{searchQuery:U,setSearchQuery:L,key:"action-bar",sortPicker:u})}function H(){const{isLoading:A}=(0,m.zJ)(),L=(0,i.useSelector)(o=>(0,m.mt)(o.dataSources)),U=(0,i.useSelector)(({dataSources:o})=>(0,m.r7)(o)),K=S.Vt.hasPermission(i.AccessControlAction.DataSourcesCreate),c=S.Vt.hasPermission(i.AccessControlAction.DataSourcesWrite),u=S.Vt.hasPermission(i.AccessControlAction.DataSourcesExplore);return n.createElement(Q,{dataSources:L,dataSourcesCount:U,isLoading:A,hasCreateRights:K,hasWriteRights:c,hasExploreRights:u})}function Q({dataSources:A,dataSourcesCount:L,isLoading:U,hasCreateRights:K,hasWriteRights:c,hasExploreRights:u}){const o=(0,s.wW)(j),N=(0,m.d7)(),C=(0,P.TH)();return(0,n.useEffect)(()=>{(0,O.dF)({grafana_version:v.v.buildInfo.version,path:C.pathname})},[C]),U?n.createElement(y.Z,null):L===0?n.createElement(h.Z,{buttonDisabled:!K,title:"No data sources defined",buttonIcon:"database",buttonLink:N.New,buttonTitle:"Add data source",proTip:"You can also define data sources through configuration files.",proTipLink:"http://docs.grafana.org/administration/provisioning/?utm_source=grafana_ds_list#data-sources",proTipLinkTitle:"Learn more",proTipTarget:"_blank"}):n.createElement(n.Fragment,null,n.createElement(Z,null),n.createElement("ul",{className:o.list},A.map(E=>{const T=v.v.appSubUrl+N.Edit.replace(/:uid/gi,E.uid);return n.createElement("li",{key:E.uid},n.createElement(l.Z,{href:c?T:void 0},n.createElement(l.Z.Heading,null,E.name),n.createElement(l.Z.Figure,null,n.createElement("img",{src:E.typeLogoUrl,alt:"",height:"40px",width:"40px",className:o.logo})),n.createElement(l.Z.Meta,null,[E.typeName,E.url,E.isDefault&&n.createElement(r.V,{key:"default-tag",name:"default",colorIndex:1})]),n.createElement(l.Z.Tags,null,n.createElement(D.Qj,{icon:"apps",fill:"outline",variant:"secondary",href:`dashboard/new-with-ds/${E.uid}`,onClick:()=>{(0,O.hJ)({grafana_version:v.v.buildInfo.version,datasource_uid:E.uid,plugin_name:E.typeName,path:C.pathname})}},"Build a dashboard"),u&&n.createElement(D.Qj,{icon:"compass",fill:"outline",variant:"secondary",className:o.button,href:(0,W.iU)(E),onClick:()=>{(0,O.U4)({grafana_version:v.v.buildInfo.version,datasource_uid:E.uid,plugin_name:E.typeName,path:C.pathname})}},"Explore"))))})))}const j=A=>({list:(0,e.css)({listStyle:"none",display:"grid"}),logo:(0,e.css)({objectFit:"contain"}),button:(0,e.css)({marginLeft:A.spacing(2)})})},86218:(F,x,t)=>{t.d(x,{x:()=>U});var e=t(66111),n=t(14747),P=t(31403),v=t(2555),s=t(9892),l=t(59250),r=t(68183),D=t(72648),h=t(17784),y=t(56766),S=t(52081),i=t(51613),m=t(74509);function O(){const c=(0,m.UQ)(),{isLoading:u}=(0,m.ZV)(),o=(0,D.wW)(B);return u||c.length===0?null:e.createElement(h.v,{"aria-label":r.wl.pages.PluginsList.signatureErrorNotice,severity:"warning",urlTitle:"Read more about plugin signing",url:"https://grafana.com/docs/grafana/latest/plugins/plugin-signatures/"},e.createElement("div",null,e.createElement("p",null,"Unsigned plugins were found during plugin initialization. Grafana Labs cannot guarantee the integrity of these plugins. We recommend only using signed plugins."),"The following plugins are disabled and not shown in the list below:",e.createElement(y.a,{items:c,className:o.list,renderItem:N=>e.createElement("div",{className:o.wrapper},e.createElement(S.Lh,{spacing:"sm",justify:"flex-start",align:"center"},e.createElement("strong",null,N.pluginId),e.createElement(i.o,{status:W(N.errorCode),className:o.badge})))})))}function W(c){switch(c){case l.w2.invalidSignature:return l.Xy.invalid;case l.w2.missingSignature:return l.Xy.missing;case l.w2.modifiedSignature:return l.Xy.modified;default:return l.Xy.missing}}function B(c){return{list:(0,s.css)({listStyleType:"circle"}),wrapper:(0,s.css)({marginTop:c.spacing(1)}),badge:(0,s.css)({marginTop:0})}}var d=t(27876),R=t(35645),b=t(86475),Z=t(72948);function H({onClick:c,dataSourcePlugin:u}){const o=u.module==="phantom",N=!o&&!u.unlicensed,C=u.info?.links?.length>0?u.info.links[0]:null,E=C?.target??"_blank",T=(0,D.wW)(Q);return e.createElement(Z.Z,{className:(0,s.cx)(T.card,"card-parent"),onClick:N?c:()=>{}},e.createElement(Z.Z.Heading,{className:T.heading,"aria-label":r.wl.pages.AddDataSource.dataSourcePluginsV2(u.name)},u.name),e.createElement(Z.Z.Figure,{align:"center",className:T.figure},e.createElement("img",{className:T.logo,src:u.info.logos.small,alt:""})),e.createElement(Z.Z.Description,{className:T.description},u.info.description),!o&&e.createElement(Z.Z.Meta,{className:T.meta},e.createElement(i.o,{status:u.signature})),e.createElement(Z.Z.Actions,{className:T.actions},C&&e.createElement(P.Qj,{"aria-label":`${u.name}, learn more.`,href:`${C.url}?utm_source=grafana_add_ds`,onClick:I=>I.stopPropagation(),rel:"noopener",target:E,variant:"secondary"},C.name)))}function Q(c){return{heading:(0,s.css)({fontSize:c.v1.typography.heading.h5,fontWeight:"inherit"}),figure:(0,s.css)({width:"inherit",marginRight:"0px","> img":{width:c.spacing(7)}}),meta:(0,s.css)({marginTop:"6px",position:"relative"}),description:(0,s.css)({margin:"0px",fontSize:c.typography.size.sm}),actions:(0,s.css)({position:"relative",alignSelf:"center",marginTop:"0px",opacity:0,".card-parent:hover &, .card-parent:focus-within &":{opacity:1}}),card:(0,s.css)({gridTemplateAreas:`
+        "Figure   Heading   Actions"
+        "Figure Description Actions"
+        "Figure    Meta     Actions"
+        "Figure     -       Actions"`}),logo:(0,s.css)({marginRight:c.v1.spacing.lg,marginLeft:c.v1.spacing.sm,width:c.spacing(7),maxHeight:c.spacing(7)})}}function j({dataSourcePlugins:c,onClickDataSourceType:u}){return!c||!c.length?null:e.createElement(y.a,{items:c,getItemKey:o=>o.id.toString(),renderItem:o=>e.createElement(H,{dataSourcePlugin:o,onClick:()=>u(o)}),className:s.css`
+        > li {
+          margin-bottom: 2px;
+        }
+      `})}function A({categories:c,onClickDataSourceType:u}){const o=R.v.featureToggles.dataConnectionsConsole?`${b.Z.AddNewConnection}?cat=data-source`:"/plugins?filterBy=all&filterByType=datasource&utm_source=grafana_add_ds";return e.createElement(e.Fragment,null,c.map(({id:N,title:C,plugins:E})=>e.createElement("div",{className:"add-data-source-category",key:N},e.createElement("div",{className:"add-data-source-category__header",id:N},C),e.createElement(j,{dataSourcePlugins:E,onClickDataSourceType:u}))),e.createElement("div",{className:"add-data-source-more"},e.createElement(P.Qj,{variant:"secondary",href:o,target:"_self",rel:"noopener"},"Find more data source plugins")))}var L=t(25e3);function U(){(0,L.OU)();const c=(0,d.useDispatch)(),u=(0,d.useSelector)(I=>(0,L.I5)(I.dataSources)),o=(0,d.useSelector)(I=>I.dataSources.dataSourceTypeSearchQuery),N=(0,d.useSelector)(I=>I.dataSources.isLoadingDataSourcePlugins),C=(0,d.useSelector)(I=>I.dataSources.categories),E=(0,L.nH)(),T=I=>c((0,L.Ht)(I));return e.createElement(K,{dataSources:u,dataSourceCategories:C,searchQuery:o,isLoading:N,onAddDataSource:E,onSetSearchQuery:T})}function K({dataSources:c,dataSourceCategories:u,searchQuery:o,isLoading:N,onAddDataSource:C,onSetSearchQuery:E}){const T=(0,L.d7)();return N?e.createElement(v.Z,null):e.createElement(e.Fragment,null,e.createElement("div",{className:"page-action-bar"},e.createElement(n.H,{value:o,onChange:E,placeholder:"Filter by name or type"}),e.createElement("div",{className:"page-action-bar__spacer"}),e.createElement(P.Qj,{href:T.List,fill:"outline",variant:"secondary",icon:"arrow-left"},"Cancel")),!o&&e.createElement(O,null),e.createElement("div",null,o&&e.createElement(j,{dataSourcePlugins:c,onClickDataSourceType:C}),!o&&e.createElement(A,{categories:u,onClickDataSourceType:C})))}}}]);
+
+//# sourceMappingURL=Connections.c8eb322433488174f3a1.js.map

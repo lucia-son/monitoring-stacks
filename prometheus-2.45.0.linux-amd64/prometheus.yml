@@ -1,0 +1,180 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  scrape_timeout: 15s
+
+rule_files:
+#  - "alert.rules"
+
+#alerting:
+#  alertmanagers:
+#    - scheme: http
+#      static_configs:
+#        - targets:
+#            - "alertmanager:9093"
+
+scrape_configs:
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["tester105:9090"]
+
+  - job_name: "zookeeper"
+    static_configs:
+      - targets:
+          - "tester098:9696"
+        labels:
+          instance: "zookeeper098"
+          env: "melon"
+      - targets:
+          - "tester099:9696"
+        labels:
+          instance: "zookeeper099"
+          env: "melon"
+      - targets:
+          - "tester100:9696"
+        labels:
+          instance: "zookeeper100"
+          env: "melon"
+      - targets:
+          - "tester101:9696"
+        labels:
+          instance: "zookeeper101"
+          env: "melon"
+      - targets:
+          - "tester102:9696"
+        labels:
+          instance: "zookeeper102"
+          env: "melon"
+      - targets:
+          - "tester103:9696"
+        labels:
+          instance: "zookeeper103"
+          env: "melon"
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: hostname
+        regex: '([^:]+)(:[0-9]+)?'
+        replacement: '${1}'
+
+  - job_name: "kafka-broker"
+    static_configs:
+      - targets:
+          - "tester098:7071"
+        labels:
+          instance: "broker098"
+          env: "melon"
+      - targets:
+          - "tester099:7071"
+        labels:
+          instance: "broker099"
+          env: "melon"
+      - targets:
+          - "tester100:7071"
+        labels:
+          instance: "broker100"
+          env: "melon"
+      - targets:
+          - "tester101:7071"
+        labels:
+          instance: "broker101"
+          env: "melon"
+      - targets:
+          - "tester102:7071"
+        labels:
+          instance: "broker102"
+          env: "melon"
+      - targets:
+          - "tester103:7071"
+        labels:
+          instance: "broker103"
+          env: "melon"
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: hostname
+        regex: '([^:]+)(:[0-9]+)?'
+        replacement: '${1}'
+
+  - job_name: "schema-registry"
+    static_configs:
+      - targets:
+          - "tester104:9696"
+        labels:
+          env: "melon"
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: hostname
+        regex: '([^:]+)(:[0-9]+)?'
+        replacement: '${1}'
+
+
+  - job_name: "kafka-connect"
+    static_configs:
+      - targets:
+          - "tester104:7071"
+        labels:
+          env: "banana"
+          kafka_connect_cluster_id: "banana-connect-cluster"
+      - targets:
+          - "tester103:7071"
+        labels:
+          env: "melon"
+          kafka_connect_cluster_id: "melon-connect-cluster"
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: hostname
+        regex: '([^:]+)(:[0-9]+)?'
+        replacement: '${1}'
+
+  - job_name: "ksqldb"
+    static_configs:
+      - targets:
+          - "tester103:7072"
+          - "tester104:7072"
+        labels:
+          env: "banana"
+          ksqldb_cluster_id: "banana-ksql" 
+      - targets:
+          - "tester102:7072"
+        labels:
+          env: "banana"
+          ksqldb_cluster_id: "melon-ksql"
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: hostname
+        regex: '([^:]+)(:[0-9]+)?'
+        replacement: '${1}'
+
+  - job_name: "kafka-lag-exporter"
+    static_configs:
+      - targets:
+          - "tester105:8000"
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+        regex: '([^:]+)(:[0-9]+)?'
+        replacement: '${1}'
+
+  - job_name: "kafka-producer"
+    static_configs:
+      - targets:
+          - "192.168.137.105:10000"
+        labels:
+          instance: "banana-producer01"
+          env: "banana"
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: hostname
+        regex: '([^:]+)(:[0-9]+)?'
+        replacement: '${1}'
+  - job_name: "kafka-consumer"
+    static_configs:
+      - targets:
+          - "192.168.137.105:20000"
+        labels:
+          instance: "banana-consumer01"
+          env: "banana"
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: hostname
+        regex: '([^:]+)(:[0-9]+)?'
+        replacement: '${1}'

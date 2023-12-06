@@ -1,0 +1,14 @@
+[Unit]
+Description=Kafka Lag Exporter
+After=network-online.target
+
+[Service]
+User=prometheus
+Group=prometheus
+Restart=on-failure
+ExecStart=/app/monitoring/kafka-lag-exporter/bin/kafka-lag-exporter \
+  -Dconfig.file=/app/monitoring/kafka-lag-exporter/conf/application.conf \
+  -Dlogback.configurationFile=/app/monitoring/kafka-lag-exporter/conf/logback.xml
+
+[Install]
+WantedBy=multi-user.target

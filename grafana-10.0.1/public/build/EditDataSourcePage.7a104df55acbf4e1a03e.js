@@ -1,0 +1,3 @@
+"use strict";(self.webpackChunkgrafana=self.webpackChunkgrafana||[]).push([[1477],{72443:(d,e,a)=>{a.r(e),a.d(e,{EditDataSourcePage:()=>c,default:()=>m});var t=a(66111),E=a(8412),_=a(77632),P=a(3515),D=a(25e3);function c(s){const n=s.match.params.uid,o=new URLSearchParams(s.location.search).get("page"),r=(0,D.MF)(n,o);return t.createElement(E.T,{navId:"datasources",pageNav:r.main,actions:t.createElement(P.K,{uid:n})},t.createElement(E.T.Contents,null,t.createElement(_.H,{uid:n,pageId:o})))}const m=c}}]);
+
+//# sourceMappingURL=EditDataSourcePage.7a104df55acbf4e1a03e.js.map
