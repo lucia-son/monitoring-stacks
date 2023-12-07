@@ -1,0 +1,54 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+      http:
+  kafka/request:
+    topic: "request_time_otel_metric"
+    encoding: "otlp_proto"
+    protocol_version: "3.0.0"
+    brokers:
+      - tester098:9092
+      - tester099:9092
+      - tester100:9092
+  kafka/volume:
+    topic: "system_volume_otel_metric"
+    encoding: "otlp_proto"
+    protocol_version: "3.0.0"
+    brokers:
+      - tester098:9092
+      - tester099:9092
+      - tester100:9092
+  kafka/outgoing:
+    topic: "outgoing_byte_rate_otel_metric"
+    encoding: "otlp_proto"
+    protocol_version: "3.0.0"
+    brokers:
+      - tester098:9092
+      - tester099:9092
+      - tester100:9092
+
+processors:
+  batch:
+
+exporters:
+  prometheus:
+    endpoint: "192.168.137.105:12340"
+    send_timestamps: true
+    metric_expiration: 180m
+    enable_open_metrics: true
+    resource_to_telemetry_conversion:
+      enabled: true
+
+#  prometheusremotewrite:
+#    resource_to_telemetry_conversion:
+#      enabled: true
+#    endpoint: "http://192.168.137.105:9090/api/v1/write"
+#    external_labels:
+#      label_name: label_value1
+service:
+  pipelines:
+    metrics:
+      receivers: [kafka/request,kafka/volume,kafka/outgoing]
+      processors: [batch]
+      exporters: [prometheus]

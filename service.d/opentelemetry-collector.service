@@ -1,0 +1,14 @@
+[Unit]
+Description=OpenTelemetry Collector Contrib
+After=network.target
+
+[Service]
+ExecStart=/app/otel/otelcol-contrib --config=/app/otel/config.yaml
+KillMode=mixed
+Restart=on-failure
+Type=simple
+User=otelcol
+Group=otelcol
+
+[Install]
+WantedBy=multi-user.target
